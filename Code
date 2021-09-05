@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Sun Sep  5 13:18:23 2021
+
+@author: nounou
+"""
+
 #Courbe de Bézier
 
 import numpy as np
@@ -18,20 +26,50 @@ P1 = [0, 0]
 P2 = [1, 1]
 P3 = [2, 0]
 
+p1 = [0, 0]
+p2 = [0, 1]
+p3 = [1, 1]
+p4 = [1, 0]
 
 TSpace = np.linspace(0, 1, 100)
 
-CurveX = []
-CurveY = []
+def QuadraticBezier(P1, P2, P3, TSpace):
+    
+    CurveX = []
+    CurveY = []
 
-for i in range(100):
-    t = TSpace[i]
-    P_Between1 = Lerp(P1, P2, t)
-    P_Between2 = Lerp(P2, P3, t)
-    CurvePoint = Lerp(P_Between1, P_Between2, t)
-    CurveX.append(CurvePoint[0])
-    CurveY.append(CurvePoint[1])
+    for i in range(100):
+        t = TSpace[i]
+        P_Between1 = Lerp(P1, P2, t)
+        P_Between2 = Lerp(P2, P3, t)
+        CurvePoint = Lerp(P_Between1, P_Between2, t)
+        CurveX.append(CurvePoint[0])
+        CurveY.append(CurvePoint[1])
 
-
-plt.scatter(CurveX, CurveY, s = 1)
-plt.show()
+    plt.scatter(CurveX, CurveY, s = 1)
+    plt.show()
+    
+def CubicBezier(P1, P2, P3, P4, TSpace):
+    
+    CurveX = []
+    CurveY = []    
+    
+    for i in range(len(TSpace)):
+        t = TSpace[i]
+        P_Between1 = Lerp(P1, P2, t)
+        P_Between2 = Lerp(P2, P3, t)
+        P_Between3 = Lerp(P3, P4, t)
+        
+        P_Prime1 = Lerp(P_Between1, P_Between2, t)
+        P_Prime2 = Lerp(P_Between2, P_Between3, t)
+        
+        CurvePoint = Lerp(P_Prime1, P_Prime2, t)
+        CurveX.append(CurvePoint[0])
+        CurveY.append(CurvePoint[1])
+        
+    plt.scatter(CurveX, CurveY, s = 1)
+    plt.show()
+        
+        
+#CubicBezier(p1, p2, p3, p4, TSpace)
+        
