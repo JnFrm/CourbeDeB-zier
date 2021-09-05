@@ -12,6 +12,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+#This function takes two points as input and returns a third one on the line that connects the two, scaled by t 
 def Lerp(P1, P2, t):
     
     P3_x = t * P1[0] + (1 - t) * P2[0]
@@ -21,17 +22,6 @@ def Lerp(P1, P2, t):
     return(P3)
     
 
-
-P1 = [0, 0]
-P2 = [1, 1]
-P3 = [2, 0]
-
-p1 = [0.2, 0]
-p2 = [0, 1]
-p3 = [1, 1]
-p4 = [0.9, 0]
-
-TSpace = np.linspace(0, 1, 100)
 
 def QuadraticBezier(P1, P2, P3, TSpace):
     
@@ -72,6 +62,21 @@ def CubicBezier(P1, P2, P3, P4, TSpace):
     #plt.ylim(-0.8, 0.8)
     plt.scatter(CurveX, CurveY, s = 1)
     plt.show()
+        
+
+#upper case is for the quadratic, lower case for the cubic Bézier
+P1 = [0, 0]
+P2 = [1, 1]
+P3 = [2, 0]
+
+p1 = [0.2, 0]
+p2 = [0, 1]
+p3 = [1, 1]
+p4 = [0.9, 0]
+
+#t can be seen as a slider
+TSpace = np.linspace(0, 1, 100)
+        
         
         
 #CubicBezier(p1, p2, p3, p4, TSpace)
