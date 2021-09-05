@@ -81,11 +81,10 @@ TSpace = np.linspace(0, 1, 100)
         
 #CubicBezier(p1, p2, p3, p4, TSpace)
 
-PVecY = np.linspace(1, -1, 20)
-PVecX = np.linspace(1, 0.5, 20)
+p3VecY = np.linspace(1, -1, 20)
+p3VecX = np.linspace(1, 0.5, 20)
 
 
 for i in range(20):
-    P = (PVecX[i], PVecY[i])
-    CubicBezier(p1, p2, P, p4, TSpace)
-    
+    p = (p3VecX[i], p3VecY[i])
+    CubicBezier(p1, p2, p, p4, TSpace)
