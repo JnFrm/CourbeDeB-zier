@@ -1,1 +1,1 @@
-# CourbeDeB-zier
+# CourbeDeBézier
