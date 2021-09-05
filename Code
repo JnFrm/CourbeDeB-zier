@@ -1,0 +1,37 @@
+#Courbe de Bézier
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+
+def Lerp(P1, P2, t):
+    
+    P3_x = t * P1[0] + (1 - t) * P2[0]
+    P3_y = t * P1[1] + (1 - t) * P2[1]
+    P3 = (P3_x, P3_y)
+    
+    return(P3)
+    
+
+
+P1 = [0, 0]
+P2 = [1, 1]
+P3 = [2, 0]
+
+
+TSpace = np.linspace(0, 1, 100)
+
+CurveX = []
+CurveY = []
+
+for i in range(100):
+    t = TSpace[i]
+    P_Between1 = Lerp(P1, P2, t)
+    P_Between2 = Lerp(P2, P3, t)
+    CurvePoint = Lerp(P_Between1, P_Between2, t)
+    CurveX.append(CurvePoint[0])
+    CurveY.append(CurvePoint[1])
+
+
+plt.scatter(CurveX, CurveY, s = 1)
+plt.show()
