@@ -26,10 +26,10 @@ P1 = [0, 0]
 P2 = [1, 1]
 P3 = [2, 0]
 
-p1 = [0, 0]
+p1 = [0.2, 0]
 p2 = [0, 1]
 p3 = [1, 1]
-p4 = [1, 0]
+p4 = [0.9, 0]
 
 TSpace = np.linspace(0, 1, 100)
 
@@ -66,10 +66,21 @@ def CubicBezier(P1, P2, P3, P4, TSpace):
         CurvePoint = Lerp(P_Prime1, P_Prime2, t)
         CurveX.append(CurvePoint[0])
         CurveY.append(CurvePoint[1])
-        
+    
+    
+    #plt.xlim(0, 1)
+    #plt.ylim(-0.8, 0.8)
     plt.scatter(CurveX, CurveY, s = 1)
     plt.show()
         
         
 #CubicBezier(p1, p2, p3, p4, TSpace)
-        
+
+PVecY = np.linspace(1, -1, 20)
+PVecX = np.linspace(1, 0.5, 20)
+
+
+for i in range(20):
+    P = (PVecX[i], PVecY[i])
+    CubicBezier(p1, p2, P, p4, TSpace)
+    
